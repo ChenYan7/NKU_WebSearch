@@ -1,0 +1,54 @@
+12/08/2020 21:33:	query for 南开	used time: 0.2398 s
+12/08/2020 21:33:	query for 南开	used time: 0.001 s
+12/08/2020 21:33:	query for 南开	used time: 0.0 s
+12/08/2020 21:33:	query for 南开	used time: 0.0 s
+12/08/2020 21:35:	query for 南开	used time: 0.1626 s
+12/08/2020 21:36:	query for 南开	used time: 0.1386 s
+12/08/2020 21:37:	query for 南开	used time: 0.0 s
+12/10/2020 16:44:	query for filetype |:南开	used time: 0.1127 s
+12/10/2020 16:45:	query for filetype 南开	used time: 0.002 s
+12/10/2020 16:45:	query for 南开	used time: 0.1985 s
+12/10/2020 16:46:	query for filetype	used time: 0.001 s
+12/10/2020 16:46:	query for filetype	used time: 0.002 s
+12/10/2020 17:38:	query for nankai	used time: 0.0369 s
+12/10/2020 17:39:	query for 南开	used time: 0.1206 s
+12/10/2020 17:39:	query for 南开	used time: 0.001 s
+12/12/2020 16:05:	query for filetype:南开	used time: 0.1801 s
+12/12/2020 16:06:	query for filetype:南开大学	used time: 0.0 s
+12/12/2020 16:07:	query for filetype :南开	used time: 0.01 s
+12/12/2020 16:07:	query for filetype |:南开	used time: 0.01 s
+12/12/2020 16:10:	query for filetype:南开	used time: 0.03 s
+12/12/2020 16:12:	query for filetype:pdf	used time: 0.008 s
+12/12/2020 16:13:	query for 南开 filetype pdf	used time: 0.1679 s
+12/12/2020 16:16:	query for 南开|filetype	used time: 0.1518 s
+12/12/2020 16:36:	query for 南开 filetype:shmtl	used time: 0.4009 s
+12/12/2020 16:38:	query for 南开 filetype:shtml	used time: 0.5116 s
+12/12/2020 16:39:	query for 南开 filetype:cn	used time: 0.1715 s
+12/12/2020 16:39:	query for 南开 filetype:doc	used time: 0.2174 s
+12/12/2020 16:39:	query for 南开 filetype:pdf	used time: 0.2852 s
+12/12/2020 16:45:	query for 南开大学	used time: 0.0459 s
+12/12/2020 16:45:	query for 南开	used time: 0.0848 s
+12/12/2020 16:46:	query for 南开	used time: 0.005 s
+12/12/2020 16:47:	query for 南开	used time: 0.1536 s
+12/12/2020 16:49:	query for 南开大学	used time: 0.1585 s
+12/12/2020 16:50:	query for 南开大学	used time: 0.006 s
+12/12/2020 16:50:	query for 南开大学	used time: 0.003 s
+12/12/2020 16:55:	query for 南开大学	used time: 0.0359 s
+12/12/2020 16:55:	query for 南开大学	used time: 0.004 s
+12/12/2020 16:55:	query for 南开大学	used time: 0.003 s
+12/12/2020 16:55:	query for 南开大学	used time: 0.006 s
+12/12/2020 16:55:	query for 南开大学	used time: 0.003 s
+12/12/2020 16:55:	query for 南开大学	used time: 0.003 s
+12/12/2020 16:55:	query for 南开大学	used time: 0.009 s
+12/12/2020 16:55:	query for 南开大学	used time: 0.001 s
+12/12/2020 16:55:	query for 南开大学	used time: 0.007 s
+12/12/2020 16:55:	query for 南开大学	used time: 0.004 s
+12/12/2020 16:55:	query for 南开大学	used time: 0.001 s
+12/12/2020 16:55:	query for 南开	used time: 0.1107 s
+12/12/2020 16:55:	query for 南开	used time: 0.003 s
+12/12/2020 16:55:	query for 南开	used time: 0.004 s
+12/12/2020 16:56:	query for 南开	used time: 0.003 s
+12/12/2020 16:56:	query for 南开	used time: 0.005 s
+12/12/2020 16:57:	query for 南开大学	used time: 0.1197 s
+12/12/2020 17:04:	query for 南开大学	used time: 0.1097 s
+12/12/2020 17:04:	query for 南开大学	used time: 0.008 s

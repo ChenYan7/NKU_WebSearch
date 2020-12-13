@@ -1,0 +1,1307 @@
+<base href="https://sso.nankai.edu.cn/sso/login;jsessionid=BC78B085FD77F2B3465A75945338E31C?service=https://i.nankai.edu.cn/user/simpleSSOLogin">
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+<meta charset="UTF-8">
+<title>登录</title>
+<meta name="viewport"
+	content="width=device-width,user-scalable=yes,minimum-scale=1.0,maximum-scale=1" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge">
+<link rel="stylesheet"
+	href="/css/jquery.slider.css" />
+<link rel="stylesheet"
+	href="/css/login.css" />
+<link rel="stylesheet"
+	href="/css/jquery.mCustomScrollbar.css" />
+</head>
+<link href="/css/dialog.css" rel="stylesheet" />
+<style>
+		
+         #slide_box {
+            text-align: center;
+            line-height: 42px;
+            font-size: 14px;
+            color: #717171;
+            background-color: #e8e8e8;
+            border: none;
+            margin-bottom: 20px;
+    		
+        }
+
+        #slide_xbox {
+            width: 42px;
+		    height: 40px;
+		    text-align: center;
+		    line-height: 42px;
+		    font-size: 16px;
+		    color: #fff;
+		    position: absolute;
+		    background: #deb1c7;
+		    border-radius: 10px 0 0 10px;
+		    overflow: hidden;
+        }
+        #btn {
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            float: right;
+            -webkit-box-shadow: 0px 0px 15px 0px #ddd;
+            -moz-box-shadow: 0px 0px 15px 0px #ddd;
+            box-shadow: 0px 0px 15px 0px #ddd;
+            color: #8a8c97;
+            background:#fff url(/img/slider.png) 0 0 no-repeat;
+            background-size: 50% 50%;
+		    background-color: #deb1c7;
+		    background-position: 10px;
+            
+        }
+
+        #btn > .iconfont {
+            font-size: 20px;
+        }
+        .sussess_hua{
+		    background: url(/img/success.png) 0px 0px no-repeat rgb(255, 255, 255)!important;
+		    border-radius: 0 10px 10px 0 !important;
+		    background-color: #deb1c7 !important;
+		    background-size: 50% !important;
+		    background-position: 10px !important;
+		}
+		
+    </style>
+<body>
+	<div class="mainCommonSection">
+		<div class="banner"></div>
+		<div class="logo-box">
+
+			<div class="abroad">
+			   <div class="logoBox">
+					<img src="/img/logo.png" alt="" />
+					<p></p>
+					<div>统一身份认证平台</div>
+				</div>
+				<div class="within">
+				    <div class="toggle" title="飞书扫码登录">
+	
+				    </div>
+				
+                    <div class="loginType">
+						<ul>
+							<li class="loginTypeActie" style="border-radius: 10px 0 0 10px">账号登录</li>
+							<li>手机号码登录</li>
+							<li style="border-radius: 0 10px 10px 0">邮箱登录</li>
+						</ul>
+					</div>
+					<ul class="loginBox" style="clear: both;">
+						<li class="errormsg"></li>
+						<li class="list account"><img
+							src="/img/icon1.png" alt=""
+							class="icon" /><input type="text" class="input n" /></li>
+						<li class="list account"><img
+							src="/img/icon2.png" alt=""
+							class="icon" /><input type="password" class="input p" /></li>
+						<!-- <li class="list account"><div id="slider2"></div></li> -->
+						<li class="list account">
+							<div id="slide_box">
+							<div id="slide_xbox">
+							<div id="btn">
+							</div>
+							</div>
+							请按住滑块，拖动到最右边
+						</li>
+						<!-- 手机号码登陆html -->
+						<li class="list phone"><img
+							src="/img/icon1.png" alt=""
+							class="icon" /><input type="text" class="input n_phone" /></li>
+						<li class="list phone"><img
+							src="/img/icon2.png" alt=""
+							class="icon" /><input type="text" class="input p_v_verify"
+							style="width: 150px" />
+							<div class="p_verify">获取验证码</div></li>
+						<!-- 手机号码登陆html -->
+						<!-- 邮箱登陆html -->
+						<li class="list email"><img
+							src="/img/icon1.png" alt=""
+							class="icon" /><input type="text" class="input n_mail" /></li>
+						<li class="list email"><img
+							src="/img/icon2.png" alt=""
+							class="icon" /><input type="text" class="input m_v_verify"
+							style="width: 150px" />
+							<div class="m_verify">获取验证码</div></li>
+						<input name="loginType" type="hidden" value="1">
+						<!-- 邮箱登陆html -->
+						<li><a href="javascript:void(0)" class="btn" id="submitRole"
+							onclick="dosub(true)">登录</a></li>
+						<li class="list">
+							 <a class="forget"
+							href="http://sso1.nankai.edu.cn/findPassword/index.action" style="float: right;" target="_blank" >忘记密码?</a>
+							<!-- <p class="warmAndSweetReminder_">
+								<span class="text">意见反馈</span>
+							</p>
+							 <p class="normal_question" onclick="normal_question()">
+								<span class="text" style="margin-right:10px">常见问题</span>
+							</p> -->
+
+						</li>
+					</ul>
+
+
+				</div>
+
+			</div>
+			<div class="warn_parent" style="width: 600px;margin-left: 100px; margin-top: 275px;">
+			   <div 
+				style=" /* height: 140px; */ width: 600px;border-radius: 10px; background: rgba(0, 0, 0, 0.3); float: left; padding: 10px; ">
+				<p
+					style="color: white; font-size: 14px; font-family: Microsoft YaHei, '宋体', Tahoma, Helvetica, Arial, sans-serif;">温馨提示</p>
+				<ul class="wxts_" ><!-- style="max-height: 108px; overflow: hidden;" -->
+					<li
+						style="word-wrap: break-word; height: 20px; height: auto; word-break: break-all;"></li>
+				</ul>
+				
+			</div>
+			<div style="color: white; font-size: 14px; font-family: Microsoft YaHei, '宋体', Tahoma, Helvetica, Arial, sans-serif;margin-left:410px;">
+				<span class="text warmAndSweetReminder_" style="cursor: pointer;">登录问题反馈</span>
+				<span class="text normal_question" onclick="normal_question()" style="margin-left:20px;cursor: pointer;">常见问题</span>
+			</div>
+			
+			
+		</div>
+	</div>
+	<div class="graph">
+		<div class="men_keep">
+			<ul class="role_select">
+				<div id="get_back">x</div>
+				<li class="role_left" price="2"><img
+					src="/img/type1.png" alt="" />
+					<p>老师</p></li>
+				<li class="role_rigth" price="1"><img
+					src="/img/type2.png" alt="" />
+					<p>学生</p></li>
+			</ul>
+		</div>
+		<div class="bg">
+			<img src="/local/graph" id="pwd_img" />
+			<div
+				style="position: absolute; top: 0; left: 0; width: 100%; height: 100%"></div>
+		</div>
+		<div class="overlay"></div>
+		<div class="back">
+			<a href="javascript:void(0)" class="backlogin" id="backlogin">返 回</a>
+		</div>
+		<!-- 	<div class="username">
+			<input id="erweima" placeholder="请输入您的账号" /><a
+				href="javascript:void(0)" class="imgSubmit" id="imgSubmit">获取图片</a>
+		</div> -->
+		<div class="counts">
+			<div class="count"></div>
+			<div class="count"></div>
+			<div class="count"></div>
+			<div class="count"></div>
+		</div>
+	</div>
+	<div class="footer" id="book">
+		津教备：0061号 <a href="http://www.miibeian.gov.cn/"
+			style="color: #8e8e8e;">津ICP备：12003308号-1</a> 版权所有 ：南开大学
+	</div>
+
+	<!-- 温馨提示弹出层 -->
+
+	<div id="tinymask_sso" style="height: 100%; width: 100%; opacity: 0.8;"></div>
+	<div id="tinymask_conetnt"
+		style="display: none; width: 320px; height: 350px;">
+		<div id="tiny_title">
+			<div
+				style='width: 280px; float: left; padding-left: 10px; margin-top: 5px;'>登录问题反馈</div>
+			<div id="idea_close"
+				style="width: 20px; float: left; height: 20px; margin-top: 5px; background-image: url('/img/close.png'); background-size: 100% 100%;"></div>
+		</div>
+		<div id="tinybox_sso" style="opacity: 1; width: 320px; height: 200px;">
+			<div id="tinycontent_sso">
+			   <div style="width:280px;margin-top: 18px;font-size: 12px;line-height: 20px;">
+				如果您在登录中遇到问题（非密码问题），请点击<a style="color: blue;font-weight:bold" href="http://online.nankai.edu.cn/infoplus/form/XXMHDLWTFK/start" target="_blank">这里</a>，通过在线南开服务大厅进行问题反馈。<p style="font-weight: bold;color: blue;">温馨提示：</p>
+				<a  style="color: blue;">1.    用户名/密码同新版信息门户。</a><br/>
+				<a style="color: blue;">2.    需要校园网环境，如在外网请先登录WEBVPN。</a>
+				</div>
+				<!--<img width="280" height="280" src="/img/feedback.png" >-->
+				
+			</div>
+		</div>
+	</div>
+	<!-- 温馨提示弹出层 -->
+	
+	<!-- 弱密码检测弹框-->
+		<div class="_dialog">
+			<div class="_dialog_title">
+				<p>弱密码提示</p>
+			</div>
+			<!-- 正文 -->
+			<div class="_dialog_body" style="text-align: center;margin-top: 8vh;color: red;font-size: 16px">
+				<p style="" class="_dialog_body_tips">该密码是弱密码，请访问<a href="https://i.nankai.edu.cn">南开信息门户</a>进行密码修改</p>
+				<p style="margin-top: 5px;color:gray"><span id="time-s" style="color:green">3s</span>后进行登录跳转</p>
+			</div>
+			<!-- <div class="_dialog_footer">
+				<a href="javascript:void(0)" id="saveBtn" onclick="sava()">保存</a>
+				<a href="javascript:void(0)" onclick="closeDialog()">取消</a>
+			</div> -->
+		</div>
+</body>
+<script type="text/javascript"
+	src="/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript"
+	src="/js/jquery.slider.min.js"></script>
+
+<script type="text/javascript"
+	src="/js/md5.js"></script>
+<script type="text/javascript"
+	src="/js/jsencrypt.js"></script>
+<script type="text/javascript"
+	src="/js/plug-in.js"></script>
+<script type="text/javascript"
+	src="/js/jquery.mCustomScrollbar.js"></script>
+<script type="text/javascript"
+	src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript"
+	src="/js/base64.js"></script>
+
+
+<script>
+function sleep(numberMillis) {    
+	var now = new Date();    
+	var exitTime = now.getTime() + numberMillis;
+	var s = 3;
+	while (true) { 
+		now = new Date();       
+		if (now.getTime() > exitTime){
+			
+			return;    
+		}else{
+			
+		}
+	
+	} 
+}
+//打开弹窗
+function openDialog(u,p,aj,roleType,t) {
+	//配置参数
+	var configure = {
+		isTitle: false, //是否显示标题
+		h: 20, //弹窗高度
+		w: 30, //弹窗宽度
+		isShowSaveBtn: false, //是否显示保存按钮
+	};
+	var mask = document.createElement("div");
+	mask.style.height = document.body.scrollHeight + 'px';
+	mask.style.width = '100%';
+	mask.style.backgroundColor = 'rgba(166,166,166,0.5)';
+	mask.style.zIndex = '999';
+	mask.style.position = "absolute";
+	mask.style.top = "0px";
+	mask.style.left = "0px";
+	mask.id = 'mask';
+	document.body.appendChild(mask);
+	document.getElementsByClassName("_dialog")[0].style.display = 'block';
+	document.getElementsByClassName("_dialog")[0].style.height = configure.h + 'vh';
+	document.getElementsByClassName("_dialog")[0].style.width = configure.w + 'vw';
+	document.getElementsByClassName("_dialog")[0].style.marginTop = '-' + (configure.h + 10) / 2 + 'vh';
+	document.getElementsByClassName("_dialog")[0].style.marginLeft = '-' + (configure.w / 2) + 'vw';
+	if (!configure.isTitle) {
+		document.getElementsByClassName("_dialog_title")[0].style.display = 'none';
+	} else {
+		document.getElementsByClassName('_dialog_body')[0].style.height = 'calc(100% - 10vh)';
+	}
+
+	var s =3;
+	setInterval(function(){
+		if(s>=0){
+			$("#time-s").html(s+"s");
+			s = s - 1;
+		}else{
+			clearInterval();
+			
+		}
+	},1000);
+	
+};
+function newLogin(){
+	
+}
+//关闭弹出框
+function closeDialog() {
+	document.getElementsByClassName("_dialog")[0].style.display = 'none';
+	if (document.getElementById('mask')) {
+		document.body.removeChild(document.getElementById('mask'));
+	}
+}
+var encrypt=new JSEncrypt();
+encrypt.setPublicKey(publickKey);
+var sliderResult=false;
+var rand="";
+var roles="";
+var tabIslock=false;
+var loginType_ = "0";
+/* var photoMap={
+		"本科生":"bks",
+		"博士生":"bss",
+		"辅导员":"fdy",
+		"管理员":"gly",
+		"教工":"jg",
+		"秘书":"ms",
+		"行政":"xz",
+		"研究生":""
+		
+} */
+$("#backlogin").click(function(){
+	$('.mainCommonSection').show();
+	$('.graph').hide();
+});
+$(".imgUrl").click(function(){
+	$('.mainCommonSection').hide();
+	$('.graph').show();
+});
+    $("#slider2").slider({
+        width: 290, // width
+        height: 40, // height
+        sliderBg: "rgb(226, 226, 226)", // 滑块背景颜色
+        color: "#7e7d7e", // 文字颜色
+        fontSize: 14, // 文字大小
+        bgColor: "#deb1c7", // 背景颜色
+        textMsg: "按住滑块，拖拽验证", // 提示文字
+        successMsg: "验证通过", // 验证成功提示文字
+        successColor: "#ffffff", // 滑块验证成功提示文字颜色
+        time: 400, // 返回时间
+        callback: function(result) { // 回调函数，true(成功),false(失败)
+        sliderResult=result;
+	        if(result){
+	        	var date = new Date();
+	        	var base = new Base64().encode(date.getFullYear()*date.getTime()*33+""+Math.floor(Math.random()*1000));
+		        	$.ajax({
+						type : "post",
+						headers:{
+							"Authorization":base,
+						},
+						url : "/sso/loadcode",
+						dataType : "json",
+						async:false,
+						success : function(data) {
+							if(data.rand!=undefined){
+								rand=data.rand;
+							}
+							
+						}
+		        	})
+	        }
+        }
+    });
+    var _lt = "1607433985071";
+    
+		
+    	function loginDosub(u,p,aj,roleType,t) {
+    		$.ajax({
+				url:"/sso/checkWeak",
+				data:{
+					password:p
+				},
+				type:"post",
+				dataType:"json",
+				success:function(data){
+					
+					if(data.state){
+						openDialog(u,p,aj,roleType,t);
+						setTimeout(function(){
+							if(aj==true||sliderResult==true){
+				    			var service="";
+				    			
+				    				service="https://i.nankai.edu.cn/user/simpleSSOLogin";
+				    			
+				    			$.ajax({
+				    				type : "post",
+				    				url : "/sso/login",
+				    				dataType : "json",
+				    				data:{
+				    					ajax:1,
+				    					username:u,
+				    					password:p,
+				    					lt:_lt,
+				    					rand:rand,
+				    					t:t,
+				    					roleType:roleType,
+				    					service:service,
+				    					loginType:loginType_
+				    				},
+				    				success : function(data) {
+				    					if(data.status==true){
+												if(data.message=="FIRST_LOGIN"){
+													window.location.href="/updatePassword.jsp";
+												}else{
+													
+													window.location.href="https://i.nankai.edu.cn/user/simpleSSOLogin?ticket="+data.message;
+												}
+										}else{
+				    						sliderResult=false;
+				    						_lt=data.lt;
+				    						var loginType=$("input[name=loginType]").val();
+				    						
+				    						if(loginType!=1){
+				    							$(".chooseBox").hide();
+				    							$(".loginBox").show();
+				    							showInput(loginType-1);
+				    						}
+				    						$(".errormsg").empty().html(data.message).show();
+				    						$("#slider2").slider("restore");
+				    						//$("#msg").html(data.message);
+				    						/* $(".warn_parent").css("height",($(".wxts_").height()+30)+"px"); */
+				    					}
+				    				}
+				    			});
+				    		}else{
+				    			window.location.href="/sso/login?lt="+_lt+"&service=https%3A%2F%2Fi.nankai.edu.cn%2Fuser%2FsimpleSSOLogin&username="+u+"&password="+p;
+				    		}
+						},3000);
+						return;
+					}else{
+						
+					}
+					
+					if(aj==true||sliderResult==true){
+		    			var service="";
+		    			
+		    				service="https://i.nankai.edu.cn/user/simpleSSOLogin";
+		    			
+		    			$.ajax({
+		    				type : "post",
+		    				url : "/sso/login",
+		    				dataType : "json",
+		    				data:{
+		    					ajax:1,
+		    					username:u,
+		    					password:p,
+		    					lt:_lt,
+		    					rand:rand,
+		    					t:t,
+		    					roleType:roleType,
+		    					service:service,
+		    					loginType:loginType_
+		    				},
+		    				success : function(data) {
+		    					if(data.status==true){
+										if(data.message=="FIRST_LOGIN"){
+											window.location.href="/updatePassword.jsp";
+										}else{
+											
+											window.location.href="https://i.nankai.edu.cn/user/simpleSSOLogin?ticket="+data.message;
+										}
+								}else{
+		    						sliderResult=false;
+		    						_lt=data.lt;
+		    						var loginType=$("input[name=loginType]").val();
+		    						
+		    						if(loginType!=1){
+		    							$(".chooseBox").hide();
+		    							$(".loginBox").show();
+		    							showInput(loginType-1);
+		    						}
+		    						$(".errormsg").empty().html(data.message).show();
+		    						$("#slider2").slider("restore");
+		    						//$("#msg").html(data.message);
+		    						/* $(".warn_parent").css("height",($(".wxts_").height()+30)+"px"); */
+		    					}
+		    				}
+		    			});
+		    		}else{
+		    			window.location.href="/sso/login?lt="+_lt+"&service=https%3A%2F%2Fi.nankai.edu.cn%2Fuser%2FsimpleSSOLogin&username="+u+"&password="+p;
+		    		}
+				},error:function(data){}
+			})
+    		
+    	}
+    	 	
+    //点击提交时先验证是否有两个角色
+    //loginType 1 账号和别名登录 2 手机号码登录 3邮箱账号登录
+    function dosub(aj) {
+    
+    	var loginType=$("input[name=loginType]").val();
+    	if(loginType==1){
+    		accountLogin(aj)
+    	}else{
+    		var code="";
+    		var mailOrphone="";
+    		var flag=true;
+    		if(loginType==2){
+    			code=$(".p_v_verify").val();
+    			mailOrphone=$(".n_phone").val();
+    			if(!hasText(mailOrphone)){
+    				$(".errormsg").empty().html("手机号码不能为空").show();
+    				flag=false;
+    			}
+    			if(!hasText(code))
+    			{
+    				$(".errormsg").empty().html("验证码不能为空").show();
+    				flag=false;
+    			}
+    			if(flag){
+					//根据用户名在后台判断该用户是否应该禁用
+    	    		userislock(mailOrphone,"2");
+    				validateCode(code,mailOrphone,1);
+    			}
+    		}else if(loginType==3){
+    			code=$(".m_v_verify").val();
+    			mailOrphone=$(".n_mail").val();
+    			if(!hasText(mailOrphone)){
+    				$(".errormsg").empty().html("邮箱账号不能为空").show();
+    				flag=false;
+    			}
+    			if(!hasText(code))
+    			{
+    				$(".errormsg").empty().html("验证码不能为空").show();
+    				flag=false;
+    			}
+    			if(flag){
+					//根据用户名在后台判断该用户是否应该禁用
+    	    		userislock(mailOrphone,"3");
+    				validateCode(code,mailOrphone,2);
+    			}
+    		}
+    	}
+    	
+    }
+
+    function clearSlide(){
+		$("#slide_xbox").html("<div id='btn'></div>");
+		$("#slide_xbox").prop("style","");
+		slide()
+	}
+    
+    function accountLogin(aj){
+    	var username=$('.n').val();
+    	var password=$('.p').val();
+    	var t = encrypt.encrypt(password);
+    	if(username==""||password==""||sliderResult==false||rand==""){
+    		if(username==""||password==""){
+    			$(".errormsg").empty().html("用户名或密码不能为空").show();
+    		}else{
+    			$(".errormsg").empty().html("请拖动滑动验证码").show();
+    		}
+    	}else{
+			//根据用户名在后台判断该用户是否应该禁用
+    		userislock(username,"1");
+    		
+    		password=hex_md5(password);
+        	//验证是否有两个角色 
+    		$.ajax({
+        		type:"post",
+        		url:"/sso/checkRole",
+        		dataType:"json",
+        		data:{
+        			'username':username,
+        			'password':password,
+        			't':t,
+        			'rand':rand,
+        			'service':"https://i.nankai.edu.cn/user/simpleSSOLogin",
+        			'loginType':loginType_
+        		},
+        		async:false,
+        		success:function(data) {
+        			if(data.haserror){
+        				sliderResult=false
+            			$(".errormsg").empty().html(data.message).show();
+    					$("#slider2").slider("restore");
+
+						clearSlide();
+           			}else{
+           				if(data.count>1){
+	           				 $(".loginBox").hide();
+	           				 $(".chooseBox").show();
+	           				$(".chooseBox li").click(function(){
+	           					var role=$(this).attr("price");
+	           					loginDosub(username,password,aj,role,t);
+	           				});
+	           			}else{
+	           				// 过滤用户身份选择功能
+	           				loginDosub(username,password,aj,null,t);
+	           			} 
+           			} 
+        		},error:function (data1){
+        			sliderResult=false
+        			$.Pop(data1+"0",{Animation:'showSweetAlert'})
+					clearSlide();
+        		}
+        	});	
+    	}
+    }
+    var scale=2000/1200;
+	var percent=1;
+	var amount=0;//参数名由原来的count改成现在的amount,因为可能是ie的关键字
+	var point = function(x,y){
+		this.x=x;
+		this.y=y;
+		this.getPo=function(){
+			return parseInt(this.x)+":"+parseInt(this.y);
+		}
+	}
+	
+	function getScale(){
+		var img = new Image();
+		img.src=$(".bg img").attr("src");
+		$(".bg").css({"display": "block"});
+		if(img.complete){
+			scale = img.width/img.height;
+			setTimeout(function(){adjust()},20);
+			$(window).unbind("resize").resize(function(){
+				adjust();
+			});
+		}else{
+			img.onload = function(){
+				scale = img.width/img.height;
+				setTimeout(function(){adjust()},20);
+				$(window).unbind("resize").resize(function(){
+					adjust();
+				});
+			};
+			img.onerror=function(){
+				$(".graph").css({"background-color": "#535C6A","overflow":"hidden"});
+				$(".bg").css({"display": "none"});
+				$.Pop('获取图片失败,请检查账号信息',{Animation:'showSweetAlert'})
+				
+			}
+			
+		}
+		
+	}
+	var array = new Array();
+	var role_cunt;
+	
+	$(function(){
+		var wx_error='';
+		console.log(wx_error)
+		// if(hasText(wx_error)){
+		// 	$(".errormsg").show();
+		// }
+		$(".bg").click(function(ev){
+			if(amount<=3){
+				if(amount<=3){
+					var p = new point((ev.pageX-this.offsetLeft)*percent,(ev.pageY-this.offsetTop)*percent);
+					array[amount]=p;
+					$(".counts").children().eq(amount).addClass("on");
+					amount++;
+				}
+				if(amount==4){
+					$(".overlay").fadeIn(300,function(){
+						var pts =encrypt.encrypt(array[0].getPo()+","+array[1].getPo()+","+array[2].getPo()+","+array[3].getPo());
+						$.post("/local/checkphoto",{"username":$(".username input").val(),"points":pts,'service':"https://i.nankai.edu.cn/user/simpleSSOLogin"},function(data){
+								if(data.status==true){
+									if(role_cunt>1){
+										$(".men_keep").show();
+										$(".role_select li").click(function(){
+				           					var role=$(this).attr("price");
+				           					select_role_login(role);
+				           				});
+									}else{
+										select_role_login();
+									}
+								}else{
+									if(data.message!=""){
+										$.Pop(data.message,{Animation:'showSweetAlert'})
+									}else{
+										$.Pop('账号或密码错误',{Animation:'showSweetAlert'})
+									}
+									
+									array = new Array();
+									amount=0;
+									$(".counts").children().removeClass("on");
+									$(".overlay").fadeOut(300);
+								}
+						},"json")
+					});
+				}
+			}
+		});
+		var tt = null;
+	
+		$("#imgSubmit").click(function(){
+			var s = $(".graph input").val();
+			if(s==null||s.length==0){
+				$.Pop('请输入您的账号',{Animation:'showSweetAlert'})
+				return;
+				/* $(".overlay").fadeIn(500); */
+			}else{
+				$(".overlay").fadeOut(500);
+				if(getLockInfo(s)){
+					return;
+				}
+				
+			}
+			 $(".bg img").attr("src","/local/graph?username="+$(".username input").val()) ;
+			array = new Array(); 
+			amount=0;
+			$(".counts").children().removeClass("on");
+			getScale();
+		})
+	})
+	function adjust(){
+		var w_width =$(window).width();
+		var w_height=$(window).height(); 
+		var img_width=$("#pwd_img").width()
+		var img_heigth=$("#pwd_img").height();
+		var m = $(".bg");
+		var p1=0;
+		$(".graph").height(img_heigth>w_height?img_heigth+90:w_height); 
+		$(".graph").width(img_width>w_width?img_width:w_width); 
+		if(img_width/img_heigth>=scale){
+			m.height(img_heigth);
+			m.width(img_width);
+			m.css({"top":"90px","left":"0px"});
+			p1=2000/img_width;
+		}else{
+			m.height(img_heigth);
+			m.width(img_width);
+			p1=1200/img_heigth;
+			m.css({"top":"90px","left":"0px"});
+		}
+		percent=p1;
+		
+	}
+	function getLockInfo(f){
+		var haserror;
+		$.ajax({
+    		type:"post",
+    		url:"/sso/getLockInfo",
+    		dataType:"json",
+    		data:"username="+f+"&service="+"https://i.nankai.edu.cn/user/simpleSSOLogin",
+    		async:false,
+    		success:function(data) {
+    			haserror=data.haserror
+    			role_cunt=data.count;
+    			 if(data.haserror){
+    				 $.Pop(data.message,{Animation:'showSweetAlert'})
+    			 }
+    		}
+    		})
+    		return haserror;
+	}
+	function select_role_login(roletype){
+		var pts =encrypt.encrypt(array[0].getPo()+","+array[1].getPo()+","+array[2].getPo()+","+array[3].getPo());
+		$.post("/local/checkGraph",{"username":$(".username input").val(),"points":pts,'service':"https://i.nankai.edu.cn/user/simpleSSOLogin","roletype":roletype},function(data){
+			if(data.status==true){
+					window.location.reload();
+			}else{
+				$.Pop('账号或密码错误',{Animation:'showSweetAlert'})
+				array = new Array();
+				amount=0;
+				$(".counts").children().removeClass("on");
+				$(".overlay").fadeOut(300);
+
+			}
+	},"json")
+	}
+	$("#get_back").click(function(){
+		$(".men_keep").hide();
+		array = new Array();
+		amount=0;
+		$(".counts").children().removeClass("on");
+		$(".overlay").fadeOut(300);
+	});
+	
+	
+	$.ajax({
+		url:"/sso/warmReminders",
+		type:"post",
+		dataType:"json",
+		async:false,
+		success:function(data){
+			
+			if(data.status=="success"){
+				
+				var base=new Base64();
+				$(".wxts_>li").html(base.decode(data.message));
+				//$(".wxts_").mCustomScrollbar();
+			}else
+			{
+				console.log(data.message);
+			}
+		},error:function(){
+			console.log("query warmReminders error.");
+		}
+})
+    //新增温馨提示代码
+    function adjust_warm(){
+	     var width=$(window).width()/2-120;
+		var height=$(window).height()/2-100;
+		$("#tinymask_conetnt").css({"top":height+"px","left": width+"px"});
+		
+	}
+	
+	$(".warmAndSweetReminder_").click(function(){
+        adjust_warm();
+		$("#tinymask_sso,#tinymask_conetnt").show();
+	})
+	$("#idea_close").click(function(){
+		$("#tinymask_sso,#tinymask_conetnt").hide();
+	})
+	//登陆类型------新增js---开始
+	//登陆类型js代码
+    $(".within .loginType ul li").click(function(){
+    	if(!tabIslock){
+    	$(this).siblings().removeClass("loginTypeActie");
+    	$(this).addClass("loginTypeActie");
+        var index=$(this).index();
+        $(".errormsg").text("");
+        showInput(index);
+    	}
+       
+    	
+    })
+    function showInput(index){
+	
+			switch(index){
+	    	case 0:
+	    	    $(".within .loginBox .phone,.within .loginBox .email").hide();
+	    	    $(".within .loginBox .account").show();
+	    		$("input[name=loginType]").val(1);
+	    		break;
+	    	case 1:
+	    		$(".within .loginBox .account,.within .loginBox .email").hide();
+	    		$(".within .loginBox .phone").show();
+	    		$("input[name=loginType]").val(2);
+	    		break;
+	    	case 2:
+	    		$(".within .loginBox .account,.within .loginBox .phone").hide();
+	    		$(".within .loginBox .email").show();
+	    		$("input[name=loginType]").val(3);
+	    		break;
+	    	}
+		
+	
+	}
+    //获取手机验证码
+    $(".p_verify").click(function(){
+    	if(!$(".p_verify").hasClass("creatValidateCode")){
+    		 $(".p_verify").addClass("creatValidateCode");
+    		 var phone=$(".n_phone").val();
+             checkPhone(phone);
+    	}
+    })
+    //获取邮箱验证码
+
+    $(".m_verify").click(function(){
+    	if(!$(".m_verify").hasClass("creatValidateCode")){
+    	
+    		$(".m_verify").addClass("creatValidateCode");
+    		var mail=$(".n_mail").val();
+        	checkEmail(mail);
+    	}
+    
+    })
+    //验证手机号
+    function checkPhone(phone){
+		var reg=/^[1][0-9]{10}$/;
+		if(!hasText(phone)){
+			$(".errormsg").text("手机号码不能为空!").show();
+			removeClass(".p_verify");
+		}else{
+			if(validateFormat(reg,phone)){
+				//showValidateCode(".p_verify",120);
+				getValidateCode(".p_verify",phone,1);
+			}else if(phone.indexOf("+")==0){
+				getValidateCode(".p_verify",phone,1);
+			}else{
+				$(".errormsg").text("手机号码格式不正确!").show();
+				removeClass(".p_verify");
+			}
+		}
+	}
+	//验证邮箱
+	function checkEmail(email){
+		var reg=/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+		if(!hasText(email)){
+			$(".errormsg").text("邮箱不能为空!").show();
+			removeClass(".m_verify");
+		}else{
+			if(validateFormat(reg,email)){
+				//showValidateCode(".m_verify",120);
+				getValidateCode(".m_verify",email,2);
+			}else{
+				$(".errormsg").text("邮箱格式不正确!").show();
+				removeClass(".m_verify");
+			}
+		}
+	}
+	//判断是否为空
+	function hasText(a) {
+		if (typeof (a) == "undefined") {
+			return false;
+		}
+		if (a == null) {
+			return false;
+		}
+		if (a == "null") {
+			return false;
+		}
+		if (typeof (a) == "string") {
+			a = a.replace(/(^\s*)|(\s*$)/g, "");
+		}
+		if (a === "") {
+			return false;
+		}
+		return true;
+	}
+	//验证邮箱手机号码格式
+	function validateFormat(reg,value){
+		if(reg.test(value)){
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	*展示邮箱手机号验证码倒计时
+	*className:单击事件验证码dom元素class
+	*timer:验证时间有效期
+	*/
+	function showValidateCode(className,timer){
+		    
+			 $(".errormsg").text('');
+			 var inte=setInterval(function(){
+	    		if(!(timer<0)){
+	    			timer--;
+	    		}
+	    		$(className).text(timer+" S");
+	    	},1000);
+	    	setTimeout(function(){
+	    		clearInterval(inte);
+	    		$(className).text("获取验证码").removeClass("creatValidateCode").show();
+	    	},120000);
+	}
+	
+	/**
+	*获取验证码
+	*
+	*emailOrPhone:邮箱或者手机号码
+	*codeType:1手机号码 2邮箱
+	*className:单击事件验证码dom元素class
+	*/
+	function getValidateCode(className,emailOrPhone,codeType){
+		$.ajax({
+			url:"/sso/loginTypeSendMailOrPhoneCode",
+			data:{
+				emailOrPhone:emailOrPhone,
+				codeType:codeType
+			},
+			dataType:"json",
+			type:"post",
+			success:function(message){
+			    if(message.status=="success"){
+					showValidateCode(className,message.timeout*60);
+				}else{
+					$(".errormsg").text(message.message).show();
+					removeClass(className);
+				}
+			},error:function(){
+				$(".errormsg").text("获取验证码失败!").show();
+			}
+			
+		})
+	}
+	/**
+	*防止重复点击
+	*/
+	function removeClass(className){
+		$(className).removeClass("creatValidateCode");
+	}
+	/**
+	*验证验证码
+	*code  验证码
+	*mailOrphone 手机号码或者邮箱
+	*type 
+	*/
+	function validateCode(code,mailOrphone,type){
+		$.ajax({
+			url:"/sso/loginTypeValidateCode",
+			data:{
+				type:type,
+				mailOrPhoneCode:code,
+				mailOrPhone:mailOrphone
+			},
+			dataType:"json",
+			success:function(message){
+				if(message.status=="success"){
+					$(".errormsg").text('');
+					roles=message.message;
+					var roleHtml="<ul class='chooseBox'";
+					if(roles.length>1){
+						 tabIslock=true;
+						if(roles.length==2){
+							roleHtml+=" style='padding:60px 20px 0;'>";
+							for(var i=0;i<roles.length;i++){
+								roleHtml+="<li class=\"";
+								if(i==0){
+									roleHtml+="left ";
+								}
+								roleHtml+='active" onclick="checkRole(this)" price='+i+'> <img src="/img/'+roles[i].showRole+'.png?t="'+new Date().getTime()+' alt="" /><p>'+roles[i].showRole+'</p></li>';
+							}
+				     }else{
+				        		roleHtml+='style="padding: 0 20px 0;">'
+				        		for(var i=0;i<roles.length;i++){
+				        			roleHtml+="<li class=\"";
+				        			if(i==0||i==2){
+										roleHtml+="left ";
+									}
+				        			roleHtml+='active" onclick="checkRole(this)" price='+i+'> <img src="/img/'+roles[i].showRole+'.png?t="'+new Date().getTime()+' alt="" /><p>'+roles[i].showRole+'</p></li>';
+								}
+						  }
+						roleHtml+="</ul>";
+						$(".loginBox").hide();
+						$(".within").append(roleHtml);
+					}else{
+						phoneOrMailLogin(roles[0].loginId,roles[0].password);
+					}
+				}else{
+					$(".errormsg").text(message.message).show();
+				}
+			},error:function(){
+				$(".errormsg").text("验证码失败!").show();
+			}
+		});
+		loginType_ = type;
+	}
+	function phoneOrMailLogin(username,password){
+		tabIslock=false;
+		var date = new Date();
+    	var base = new Base64().encode(date.getFullYear()*date.getTime()*33+""+Math.floor(Math.random()*1000));
+		$.ajax({
+			type : "post",
+			url : "/sso/loadcode",
+			dataType : "json",
+			async:false,
+			headers:{
+				"Authorization":base,
+			},
+			success : function(data) {
+				rand=data.rand;
+				$.ajax({
+		    		type:"post",
+		    		url:"/sso/checkRole",
+		    		dataType:"json",
+		    		data:{
+		    			'username':username,
+		    			'password':password,
+		    			't':password,
+		    			'rand':rand,
+		    			'service':"https://i.nankai.edu.cn/user/simpleSSOLogin",
+		    			'loginType':loginType_
+		    		},
+		    		async:false,
+		    		success:function(data) {
+		    			if(data.haserror){
+							var loginType=$("input[name=loginType]").val();
+    						if(loginType!=1){
+    							$(".chooseBox").hide();
+    							$(".loginBox").show();
+    							showInput(loginType-1);
+    						}
+		    				sliderResult=false;
+		        			$(".errormsg").empty().html(data.message).show();
+							$("#slider2").slider("restore");
+		       			}else{
+		       				if(data.count>1){
+		       					 $(".loginBox").hide();
+		           				 $(".chooseBox").show();
+		           				 $(".chooseBox li").click(function(){
+		           					var role=$(this).attr("price");
+		           					loginDosub(username,password,true,role,null);
+		           				});
+		           			}else{
+		           				// 过滤用户身份选择功能
+		           				loginDosub(username,password,true,null,null);
+		           			} 
+		       			} 
+		    		},error:function (data1){
+		    			sliderResult=false
+		    			$.Pop(data1+"0",{Animation:'showSweetAlert'});
+		    		}
+		    	});	
+			}
+    	})
+		
+	}
+	function checkRole(obj){
+		var index=$(obj).attr("price");
+		var username=roles[index].loginId;
+		var password=roles[index].password;
+		phoneOrMailLogin(username,password);
+	}
+	
+	//登陆类型------新增js---结束
+	
+	//常见问题---新增js--开始
+	function normal_question(){
+		
+		var address="/html.jsp?address="+window.location.href;
+		window.location.href=address;
+	}
+	//常见问题---新增js-结束
+	$(".toggle").unbind("click").click(function(){
+	   	window.location.href='https://feishu.nankai.edu.cn/qrcodelogin/login.html?appid=nk86859331588044';
+	})
+	
+	//根据登录账号，后台验证该账号是否应该禁用
+	function userislock(username,type){
+	
+			$.ajax({
+	    		type:"post",
+	    		url: "/islock/islockuser",
+	    		dataType:"json",
+	    		data:{
+	    			'username':username,
+	    			'type':type
+	    		},
+	    		success:function(data) {
+	    			if(data.status){
+	    				console.log("islock user sucess ! ");
+	    			}else{
+	    				console.log("user not lock demo!"+data.message);
+	    			}
+	    		}
+	    	});	
+		
+	}
+	
+	var locked;
+    window.onload = function () {
+    	
+        slide();
+        //禁止F12
+        $("*").keydown(function (e) {//判断按键
+            e = window.event || e || e.which;
+            if (e.keyCode == 123) {
+                e.keyCode = 0;
+                return false;
+            }
+        });
+        //禁止审查元素
+        $(document).bind("contextmenu",function(e){
+            return false;
+        });
+    }
+    window.onresize = function () {
+        if(locked==true){
+            var boxWidth = $('#slide_box').width();
+            $('#slide_xbox').width(boxWidth);
+        }else{
+            slide();
+        }
+    }
+    
+    function accountLogincode(){
+    	var date = new Date();
+    	var base = new Base64().encode(date.getFullYear()*date.getTime()*33+""+Math.floor(Math.random()*1000));
+        	$.ajax({
+				type : "post",
+				headers:{
+					"Authorization":base,
+				},
+				url : "/sso/loadcode",
+				dataType : "json",
+				async:false,
+				success : function(data) {
+					if(data.rand!=undefined){
+						rand=data.rand;
+					}
+					
+				}
+        	})
+    }
+		  //滑动解锁移动
+    function slide() {
+        var slideBox = $('#slide_box')[0];
+        var slideXbox = $('#slide_xbox')[0];
+        var btn = $('#btn')[0];
+        var slideBoxWidth = slideBox.offsetWidth;
+        var btnWidth = btn.offsetWidth;
+        //pc端
+        btn.ondragstart = function () {
+            return false;
+            
+            
+        };
+        btn.onselectstart = function () {
+            return false;
+        };
+        btn.onmousedown = function (e) {
+            var disX = e.clientX - btn.offsetLeft;
+            document.onmousemove = function (e) {
+                var objX = e.clientX - disX + btnWidth;
+                if (objX < btnWidth) {
+                    objX = btnWidth
+                }
+                if (objX > slideBoxWidth) {
+                    objX = slideBoxWidth
+                }
+                $('#slide_xbox').width(objX + 'px');
+            };
+            document.onmouseup = function (e) {
+                var objX = e.clientX - disX + btnWidth;
+                console.log(objX)
+                if (objX < slideBoxWidth) {
+                    objX = btnWidth;
+                } else {
+                    objX = slideBoxWidth;
+                    locked = true;
+                    $('#slide_xbox').html('验证通过<div id="btn"><i class="iconfont icon-xuanzhong" style="color: #35b34a;"></i></div>');
+                    $('#btn').addClass("sussess_hua");
+                    sliderResult = true;
+                    accountLogincode();
+                }
+                $('#slide_xbox').width(objX + 'px');
+                document.onmousemove = null;
+                document.onmouseup = null;
+            };
+        };
+        
+        
+        //移动端
+        var cont = $("#btn");
+        var startX = 0, sX = 0, moveX = 0,leftX = 0;
+        cont.on({//绑定事件
+            touchstart: function (e) {
+                startX = e.originalEvent.targetTouches[0].pageX;//获取点击点的X坐标
+                sX = $(this).offset().left;//相对于当前窗口X轴的偏移量
+                leftX = startX - sX;//鼠标所能移动的最左端是当前鼠标距div左边距的位置
+            },
+            touchmove: function (e) {
+                e.preventDefault();
+                moveX = e.originalEvent.targetTouches[0].pageX;//移动过程中X轴的坐标
+                var objX = moveX - leftX + btnWidth;
+                if (objX < btnWidth) {
+                    objX = btnWidth
+                }
+                if (objX > slideBoxWidth) {
+                    objX = slideBoxWidth
+                }
+                $('#slide_xbox').width(objX + 'px');
+            },
+            touchend: function (e) {
+                var objX = moveX - leftX + btnWidth;
+                if (objX < slideBoxWidth) {
+                    objX = btnWidth;
+                } else {
+                    objX = slideBoxWidth;
+                    locked = true;
+                    $('#slide_xbox').html('验证通过<div id="btn"><i class="iconfont icon-xuanzhong" style="color: #35b34a;"></i></div>');
+                    $('#btn').addClass("sussess_hua");
+                    sliderResult = true;
+                    accountLogincode();
+                }
+                $('#slide_xbox').width(objX + 'px');
+            }
+        });
+    }
+	
+</script>
+</html>

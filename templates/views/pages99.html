@@ -1,0 +1,252 @@
+<base href="https://vpn.nankai.edu.cn/"><html>
+<head>
+
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache" >
+<meta http-equiv="Cache-Control" content="must-revalidate" >
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+
+<NOSCRIPT>
+Your browser does not support JavaScript (or it is blocked). Please check your browser settings and make sure it supports JavaScript.
+</NOSCRIPT>
+<body>
+</body>
+
+<script>
+
+var hashIndex = location.href.lastIndexOf("#");
+var sourceUrl = "";
+if(hashIndex != -1  && location.href.length > (hashIndex + 1)) {
+	sourceUrl = location.href.substr(hashIndex + 1);
+}
+else {
+	sourceUrl = encodeURIComponent(location.href);
+}
+
+/*
+客户端要从中解析地址时间, 老版本时间为3s, 需保持不变
+var selectline_timeout = "3";
+*/
+
+var time_distance = "10";
+var g_midatk = "0";
+var g_lines = [];
+//var lineInterArr = [];
+var delayTimer = [];
+var g_timeout = null;
+
+/*
+	luyi 20120223
+	1、先分析line_list中的数据，转换成Array
+	2、通过优先级级对数据进行分组，并按优先级别进行排序
+	3、对分组后的数据按速度选路
+	*/
+	/*old function about win_location just support for old version update*/
+function win_location(imgs, level, callback){
+	var lines = [],
+		stop = false,
+		config_timeout = parseFloat(time_distance),
+		interval = level * config_timeout * 10,
+		delay_timeout = level * config_timeout * 10,
+		result = null,
+		MAX = 5,
+		MIN = 3;
+	function loaded(is_timeout){	//图片onload成功时，检查此级别的线路请求次数是否达到了最大次数MAX，或第一条与第二条的差距是否达到了最小次数MIN；线路只有一条时，检查是否达到了最小请求次数MIN。
+		var _lines = [];
+		for(var i=0, len = lines.length; i<len; i++){
+			_lines[i] = { line: i, index: lines[i] };
+		}
+		_lines.sort(function(a, b){
+			if(a.index > b.index){
+				return -1;
+			}else if(a.index < b.index){
+				return 1;
+			}else{
+				return 0;
+			}
+		});
+		//if((_lines.length === 1 && _lines[0].index >= MIN) || _lines[0].index >= MAX || (_lines.length >= 2 && _lines[0].index - _lines[1].index >= MIN)){
+		if(_lines[0].index >= MIN){
+			stop = true;
+			result = imgs[_lines[0].line].url;	//已经符合选路规则，选择onload次数完成最多的。
+			// 优先级高的先跳，优先级别的等待时间（高：0，中：100ms，低：200ms）
+			delayTimer[level] = setTimeout(function () {
+				clearTimeout(g_timeout);
+				callback(result);  
+			}, delay_timeout);
+		}
+	}
+	function reLoad(el, index){
+		return function(){
+			el.src = imgs[index].src + '?' + Math.random();
+		};
+	}
+
+	function createDelegate(el, index){
+		return function(){
+			if(!stop){
+				lines[index]++;
+				imgs[index].count = lines[index];
+				loaded(false);
+				if(!stop && lines[index] <= MAX){
+					el.src = imgs[index].src + '?' + Math.random();
+				}
+			}
+		};
+	}
+
+	var els = document.createDocumentFragment();
+	for(var i=0, len = imgs.length; i<len; i++){
+		lines[i] = 0;
+		var el = document.createElement('img');
+		el.style.position = 'absolute';
+		el.style.top = '-1000px';
+		el.onload = createDelegate(el, i);
+		el.onerror = reLoad(el, i);
+		el.src = imgs[i].src + '?' + Math.random();
+		els.appendChild(el);
+	}
+	document.body.appendChild(els);
+	//定时查询是否已经完成了选路，且达到了优先级别的等待时间（高:0,中:30ms,低60ms;差值10毫秒）
+	//lineInterArr[level] = setInterval(function(){
+	//	interval-=10;  // interval-100, 初始值interval = level * config_timeout * 10,
+	//	if(result && interval<=0){
+	//		for(var k=0; k<lineInterArr.length;k++){
+	//			clearInterval(lineInterArr[k]);
+	//		}
+	//		clearTimeout(g_timeout);
+	//		callback(result);  //优先级高的先跳
+	//	}
+	//}, 10);
+}
+//第二步:按优先级别对路线进行分组
+function lineLevel(imgs, callback){
+	var obj_lines = {},
+		arr_lines = [],
+		config_timeout = parseFloat(time_distance);
+	for(var i=0, len = imgs.length; i<len; i++){
+		var right = imgs[i].right;
+		if(!obj_lines[right]){
+			obj_lines[right] = [];
+		}
+		obj_lines[right].push(imgs[i]);
+	}
+	for(var prop in obj_lines){
+		if(obj_lines.hasOwnProperty(prop)){
+			arr_lines.push({ right: prop, lines: obj_lines[prop] });
+		}
+	}
+	arr_lines.sort(function(a, b){	//按级别进行排序
+		if(a.right > b.right){
+			return 1;
+		}else if(a.right < b.right){
+			return -1;
+		}else{
+			return 0;
+		}
+	});
+	for(var i=0, len = arr_lines.length; i<len; i++){
+		win_location(arr_lines[i].lines, i, callback);
+	}
+	g_timeout = setTimeout(function(){	//当所有路线都在指定时间内未完成选路，则查找有多少条已经有发送过成功请求的，按优先级别，选择成功次数最高的。
+		var slines = [];	//统计出有多少条有onload成功的线路
+		for(var i=0, len = arr_lines.length; i<len; i++){
+			var item = arr_lines[i],
+				i_lines = item.lines;
+			for(var ii=0, ilen = i_lines.length; ii<ilen; ii++){
+				if(i_lines[ii].count != null && i_lines[ii].count > 0){
+					slines.push(i_lines[ii]);
+				}
+			}
+			if(slines.length > 0){
+				break;
+			}
+		}
+		if(slines.length > 0){	//按优先级别，找到onload成功最多的线路
+			slines.sort(function(a, b){
+				if(a.count > b.count){
+					return -1;
+				}else if(a.count < b.count){
+					return 1;
+				}else{
+					return 0;
+				}
+			});
+			callback(slines[0].url);
+		}else{
+			callback(arr_lines[0].lines[0].url);	//当所有路线都超时，直接选优先级别最高的第一条。
+		}
+		clearTimeout(g_timeout);
+		//for(var k=0; k<lineInterArr.length;k++){
+		//	clearInterval(lineInterArr[k]);
+		//}
+	
+		for(var k=0; k<delayTimer.length; k++){
+			clearTimeout(delayTimer[k]);
+		}
+	}, arr_lines.length * config_timeout * 1000);
+}
+//第一步:对线路数据进行分析
+function gotoLines(){
+	var lines = g_lines,
+		flag = false;
+
+	function gotoUrl(url){
+		if(flag){ return; }
+
+		flag = true;
+		
+		// 存储 sourceUrl，校验window.name中是否存储过数据并符合标记
+		var tempURL,
+		    urlFlag;
+		tempURL = window.name || '';
+		urlFlag = tempURL.substr(0,10);
+		if(urlFlag !== 'sf_ssl_ms_'){
+			window.name = 'sf_ssl_ms_' + sourceUrl;
+		}
+
+		window.location.href = url;
+	}
+
+
+
+	if(lines.length > 1){
+		lineLevel(lines, gotoUrl);
+	}else if(lines.length === 1){
+		gotoUrl(lines[0].url);
+	}else{
+
+		var getOrigin = function () {
+			if (window.location.origin) {
+				return window.location.origin;
+			} else {
+				return window.location.protocol + '//' + window.location.hostname + 
+					(window.location.port ? ':' + window.location.port : '');
+			}
+		}
+
+		gotoUrl(getOrigin() + '/portal');
+	}
+}
+/*end*/
+
+(function () {
+	var loc = window.location;
+	var url = loc.protocol+"//"+loc.host;
+	if(/\/$/g.test(url)){
+		url = url.substring(0,url.length-1);
+	}
+	url = encodeURIComponent(url);
+	//注意: 以下注释中的代码不可修改和重复, 客户端要从中解析地址
+	/* 
+		if(CookiesEnabled())
+		g_lines = [{src:"",url:"https://vpn.nankai.edu.cn/por/login_psw.csp",flag:'win_location("https://vpn.nankai.edu.cn/por/login_psw.csp")',right:0}];
+	*/
+	g_lines = [{src:"",url:"https://vpn.nankai.edu.cn/portal",right:0}];
+	gotoLines();
+})();
+</script>
+</html>
+
